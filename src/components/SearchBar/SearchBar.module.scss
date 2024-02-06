@@ -1,0 +1,20 @@
+.wrapper {
+	position: relative;
+	margin-bottom: 20px;
+
+	.input {
+		width: 1080px;
+		border: 1px solid #00000046;
+		border-radius: 6px;
+		padding: 10px 30px;
+		&::placeholder {
+			color: #000;
+		}
+	}
+	.icon {
+		position: absolute;
+		top: 8px;
+		left: 5px;
+		font-size: 23px;
+	}
+}
