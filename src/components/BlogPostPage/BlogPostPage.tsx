@@ -44,11 +44,11 @@ export const BlogPostPage: FC = () => {
 				</Link>
 				<div className={styles.reactions}>
 					<p className={styles.likeCount}>
-						<BiSolidLike className={styles.icon} onClick={handleLike} />
+						<BiSolidLike className={styles.icon} style={reactions[Number(postId)]?.recentlyLiked ? { color: 'green' } : {}} onClick={handleLike} />
 						{reactions[Number(postId)]?.likes || 0}
 					</p>
 					<p className={styles.likeCount}>
-						<BiSolidDislike className={styles.icon} onClick={handleDislike} />
+						<BiSolidDislike className={styles.icon} style={reactions[Number(postId)]?.recentlyDisliked ? { color: 'red' } : {}} onClick={handleDislike} />
 						{reactions[Number(postId)]?.dislikes || 0}
 					</p>
 				</div>

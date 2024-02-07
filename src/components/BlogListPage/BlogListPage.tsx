@@ -50,11 +50,11 @@ export const BlogListPage: FC = () => {
 							<p className={styles.title}>{post.title}</p>
 							<div className={styles.reactions} style={index !== 0 ? { display: 'none' } : {}}>
 								<p className={styles.likeCount}>
-									<BiSolidLike className={styles.icon} onClick={() => handleLike(post.id)} />
+									<BiSolidLike className={styles.icon} style={reactions[post.id]?.recentlyLiked ? { color: 'green' } : {}} onClick={() => handleLike(post.id)} />
 									{reactions[post.id]?.likes || 0}
 								</p>
 								<p className={styles.likeCount}>
-									<BiSolidDislike className={styles.icon} onClick={() => handleDislike(post.id)} />
+									<BiSolidDislike className={styles.icon} style={reactions[post.id]?.recentlyDisliked ? { color: 'red' } : {}} onClick={() => handleDislike(post.id)} />
 									{reactions[post.id]?.dislikes || 0}
 								</p>
 							</div>
@@ -63,11 +63,11 @@ export const BlogListPage: FC = () => {
 						<div className={styles.box}>
 							<div className={styles.reactions} style={index === 0 ? { opacity: 0 } : {}}>
 								<p className={styles.likeCount}>
-									<BiSolidLike className={styles.icon} onClick={() => handleLike(post.id)} />
+									<BiSolidLike className={styles.icon} style={reactions[post.id]?.recentlyLiked ? { color: 'green' } : {}} onClick={() => handleLike(post.id)} />
 									{reactions[post.id]?.likes || 0}
 								</p>
 								<p className={styles.likeCount}>
-									<BiSolidDislike className={styles.icon} onClick={() => handleDislike(post.id)} />
+									<BiSolidDislike className={styles.icon} style={reactions[post.id]?.recentlyDisliked ? { color: 'red' } : {}} onClick={() => handleDislike(post.id)} />
 									{reactions[post.id]?.dislikes || 0}
 								</p>
 							</div>
