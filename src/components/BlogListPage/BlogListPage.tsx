@@ -1,6 +1,6 @@
+import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import image from '../../images/Image.png';
-import { FC, useState } from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { useGetPostsQuery } from '../../redux/api';
 import { BiSolidLike, BiSolidDislike } from 'react-icons/bi';
