@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { postsApi } from './api';
-import reactionsReducer from './reactionsSlice';
+import reactions from './reactionsSlice';
 
 export const store = configureStore({
 	reducer: {
-		reactions: reactionsReducer,
+		reactions,
 		[postsApi.reducerPath]: postsApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(postsApi.middleware),
