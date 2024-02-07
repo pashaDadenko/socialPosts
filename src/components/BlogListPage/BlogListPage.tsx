@@ -5,8 +5,8 @@ import { RootState } from '../../redux/store';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { useGetPostsQuery } from '../../redux/api';
 import { useDispatch, useSelector } from 'react-redux';
-import { BiSolidLike, BiSolidDislike } from 'react-icons/bi';
 import { toggleReaction } from '../../redux/reactionsSlice';
+import { BiSolidLike, BiSolidDislike } from 'react-icons/bi';
 
 import styles from './BlogListPage.module.scss';
 
