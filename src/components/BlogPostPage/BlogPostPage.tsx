@@ -32,11 +32,11 @@ export const BlogPostPage: FC = () => {
 				</Link>
 				<div className={styles.reactions}>
 					<p className={styles.likeCount}>
-						<BiSolidLike className={styles.icon} style={reactions.recentlyLiked ? { color: 'green' } : {}} onClick={() => handleLike(Number(postId))} />
+						<BiSolidLike className={styles.icon} style={reactions && reactions.recentlyLiked ? { color: 'green' } : {}} onClick={() => handleLike(Number(postId))} />
 						{reactions?.likes}
 					</p>
 					<p className={styles.likeCount}>
-						<BiSolidDislike className={styles.icon} style={reactions.recentlyDisliked ? { color: 'red' } : {}} onClick={() => handleDislike(Number(postId))} />
+						<BiSolidDislike className={styles.icon} style={reactions && reactions.recentlyDisliked ? { color: 'red' } : {}} onClick={() => handleDislike(Number(postId))} />
 						{reactions?.dislikes}
 					</p>
 				</div>
