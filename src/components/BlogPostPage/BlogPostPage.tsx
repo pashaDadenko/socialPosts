@@ -17,23 +17,11 @@ export const BlogPostPage: FC = () => {
 
 	const { data: post } = useGetPostByIdQuery(Number(postId));
 
-	const reactions = useSelector((state: RootState) => state.reactions);
+	const reactions = useSelector((state: RootState) => state.reactions[Number(postId)]);
 
-	const handleLike = () => {
-		if (reactions[Number(postId)]?.likes === 1) {
-			dispatch(toggleReaction({ postId: Number(postId), reaction: 'like' }));
-		} else if (!reactions[Number(postId)]?.likes) {
-			dispatch(toggleReaction({ postId: Number(postId), reaction: 'like' }));
-		}
-	};
+	const handleLike = (postId: number) => dispatch(toggleReaction({ postId, reaction: 'like' }));
 
-	const handleDislike = () => {
-		if (reactions[Number(postId)]?.dislikes === 1) {
-			dispatch(toggleReaction({ postId: Number(postId), reaction: 'dislike' }));
-		} else if (!reactions[Number(postId)]?.dislikes) {
-			dispatch(toggleReaction({ postId: Number(postId), reaction: 'dislike' }));
-		}
-	};
+	const handleDislike = (postId: number) => dispatch(toggleReaction({ postId, reaction: 'dislike' }));
 
 	return (
 		<div className={styles.wrapper}>
@@ -44,12 +32,12 @@ export const BlogPostPage: FC = () => {
 				</Link>
 				<div className={styles.reactions}>
 					<p className={styles.likeCount}>
-						<BiSolidLike className={styles.icon} style={reactions[Number(postId)]?.recentlyLiked ? { color: 'green' } : {}} onClick={handleLike} />
-						{reactions[Number(postId)]?.likes || 0}
+						<BiSolidLike className={styles.icon} style={reactions.recentlyLiked ? { color: 'green' } : {}} onClick={() => handleLike(Number(postId))} />
+						{reactions?.likes}
 					</p>
 					<p className={styles.likeCount}>
-						<BiSolidDislike className={styles.icon} style={reactions[Number(postId)]?.recentlyDisliked ? { color: 'red' } : {}} onClick={handleDislike} />
-						{reactions[Number(postId)]?.dislikes || 0}
+						<BiSolidDislike className={styles.icon} style={reactions.recentlyDisliked ? { color: 'red' } : {}} onClick={() => handleDislike(Number(postId))} />
+						{reactions?.dislikes}
 					</p>
 				</div>
 			</div>
