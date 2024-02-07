@@ -1,6 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
 import { postsApi } from './api';
 import reactions from './reactionsSlice';
+import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
 	reducer: {
