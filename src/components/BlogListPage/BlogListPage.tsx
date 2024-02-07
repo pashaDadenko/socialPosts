@@ -15,11 +15,13 @@ export const BlogListPage: FC = () => {
 
 	const { data: posts } = useGetPostsQuery();
 
-	const reactions = useSelector((state: RootState) => state.reactions);
-
 	const [searchQuery, setSearchQuery] = useState('');
 
 	const handleSearch = (query: string) => setSearchQuery(query);
+
+	const reactions = useSelector((state: RootState) => state.reactions);
+
+	const filteredPosts = posts?.filter((post) => post.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
 	const handleLike = (postId: number) => {
 		if (reactions[postId]?.likes === 1) {
@@ -36,8 +38,6 @@ export const BlogListPage: FC = () => {
 			dispatch(toggleReaction({ postId, reaction: 'dislike' }));
 		}
 	};
-
-	const filteredPosts = posts?.filter((post) => post.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
 	return (
 		<div className={styles.wrapper}>
