@@ -1,22 +1,43 @@
 import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import image from '../../images/Image.png';
+import { RootState } from '../../redux/store';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { useGetPostsQuery } from '../../redux/api';
+import { useDispatch, useSelector } from 'react-redux';
 import { BiSolidLike, BiSolidDislike } from 'react-icons/bi';
+import { toggleReaction } from '../../redux/reactionsSlice';
 
 import styles from './BlogListPage.module.scss';
 
 export const BlogListPage: FC = () => {
-	const { data: posts, isLoading } = useGetPostsQuery();
+	const dispatch = useDispatch();
+
+	const { data: posts } = useGetPostsQuery();
+
+	const reactions = useSelector((state: RootState) => state.reactions);
 
 	const [searchQuery, setSearchQuery] = useState('');
 
 	const handleSearch = (query: string) => setSearchQuery(query);
 
-	const filteredPosts = posts?.filter((post) => post.title.toLowerCase().includes(searchQuery.toLowerCase()));
+	const handleLike = (postId: number) => {
+		if (reactions[postId]?.likes === 1) {
+			dispatch(toggleReaction({ postId, reaction: 'like' }));
+		} else if (!reactions[postId]?.likes) {
+			dispatch(toggleReaction({ postId, reaction: 'like' }));
+		}
+	};
 
-	if (isLoading) return <div>Loading...</div>;
+	const handleDislike = (postId: number) => {
+		if (reactions[postId]?.dislikes === 1) {
+			dispatch(toggleReaction({ postId, reaction: 'dislike' }));
+		} else if (!reactions[postId]?.dislikes) {
+			dispatch(toggleReaction({ postId, reaction: 'dislike' }));
+		}
+	};
+
+	const filteredPosts = posts?.filter((post) => post.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
 	return (
 		<div className={styles.wrapper}>
@@ -29,10 +50,12 @@ export const BlogListPage: FC = () => {
 							<p className={styles.title}>{post.title}</p>
 							<div className={styles.reactions} style={index !== 0 ? { display: 'none' } : {}}>
 								<p className={styles.likeCount}>
-									<BiSolidLike className={styles.icon} />
+									<BiSolidLike className={styles.icon} onClick={() => handleLike(post.id)} />
+									{reactions[post.id]?.likes || 0}
 								</p>
 								<p className={styles.likeCount}>
-									<BiSolidDislike className={styles.icon} />
+									<BiSolidDislike className={styles.icon} onClick={() => handleDislike(post.id)} />
+									{reactions[post.id]?.dislikes || 0}
 								</p>
 							</div>
 						</div>
@@ -40,10 +63,12 @@ export const BlogListPage: FC = () => {
 						<div className={styles.box}>
 							<div className={styles.reactions} style={index === 0 ? { opacity: 0 } : {}}>
 								<p className={styles.likeCount}>
-									<BiSolidLike className={styles.icon} />
+									<BiSolidLike className={styles.icon} onClick={() => handleLike(post.id)} />
+									{reactions[post.id]?.likes || 0}
 								</p>
 								<p className={styles.likeCount}>
-									<BiSolidDislike className={styles.icon} />
+									<BiSolidDislike className={styles.icon} onClick={() => handleDislike(post.id)} />
+									{reactions[post.id]?.dislikes || 0}
 								</p>
 							</div>
 							<Link to={`/post/${post.id}`} className={styles.link}>
