@@ -11,11 +11,9 @@ interface ReactionsState {
 	[postId: number]: Reaction;
 }
 
-const initialState: ReactionsState = {};
-
 const reactionsSlice = createSlice({
 	name: 'reactions',
-	initialState,
+	initialState: <ReactionsState>{},
 	reducers: {
 		toggleReaction(state, action: PayloadAction<{ postId: number; reaction: 'like' | 'dislike' }>) {
 			const { postId, reaction } = action.payload;
@@ -41,7 +39,6 @@ const reactionsSlice = createSlice({
 					state[postId].likes = 0;
 					state[postId].dislikes = 1;
 					state[postId].recentlyLiked = false;
-
 					state[postId].recentlyDisliked = true;
 				}
 			}
