@@ -1,76 +1,84 @@
-.fullWidth {
-	width: 100%;
-}
-.halfWidth {
-	width: calc(47% - 10px);
-	margin-right: 20px;
-}
-.small {
-	width: 100%;
-}
-.flex {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 60px;
-	padding-right: 30px;
-	margin-top: 20px;
-	.likeCount {
-		color: #959298;
-		.icon {
-			color: inherit;
-		}
-	}
-}
-.conditional {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
 .wrap {
-	margin-bottom: 20px;
-	border-radius: 20px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-	.image {
-		border-top-left-radius: 20px;
-		border-top-right-radius: 20px;
-	}
-	.title {
-		color: #000;
-		padding-left: 20px;
-		font-weight: 600;
-		margin-top: 20px;
-		&::first-letter {
-			text-transform: uppercase;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	.content {
+		width: 49%;
+		margin-bottom: 20px;
+		border-radius: 20px;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+		&:first-child {
+			width: 100%;
 		}
-	}
-	.subTitle {
-		margin-top: 20px;
-		padding-left: 20px;
-		&::first-letter {
-			text-transform: uppercase;
+		.image {
+			width: 100%;
+			border-top-left-radius: 20px;
+			border-top-right-radius: 20px;
 		}
-	}
-	.box {
-		display: flex;
-		justify-content: space-between;
-		padding: 20px;
-		.link {
-			text-decoration: none;
-			color: #000;
-			border: 1px solid #000;
-			padding: 10px;
-			border-radius: 20px;
-			&:hover {
-				color: #00000062;
+		.flex {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.reactions {
+				display: flex;
+				align-items: center;
+				padding-right: 20px;
+				margin-top: 20px;
+				gap: 60px;
+				.likeCount {
+					display: flex;
+					align-items: center;
+					color: #959298;
+					.icon {
+						cursor: pointer;
+						margin-right: 5px;
+						color: inherit;
+					}
+				}
 			}
 		}
-	}
-	.boxRight {
-		display: flex;
-		justify-content: end;
-		padding: 20px;
+		.title {
+			color: #000;
+			padding-left: 20px;
+			font-weight: 600;
+			margin-top: 20px;
+			&::first-letter {
+				text-transform: uppercase;
+			}
+		}
+		.text {
+			margin-top: 20px;
+			padding-left: 20px;
+			&::first-letter {
+				text-transform: uppercase;
+			}
+		}
+		.box {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin: 0 20px;
+			.reactions {
+				display: flex;
+				align-items: center;
+				padding-right: 20px;
+				margin-top: 20px;
+				gap: 60px;
+				.likeCount {
+					display: flex;
+					align-items: center;
+					color: #959298;
+					.icon {
+						cursor: pointer;
+						margin-right: 5px;
+						color: inherit;
+					}
+				}
+			}
+		}
 		.link {
+			margin-top: 20px;
+			margin-bottom: 20px;
 			text-decoration: none;
 			color: #000;
 			border: 1px solid #000;
@@ -78,6 +86,7 @@
 			border-radius: 20px;
 			&:hover {
 				color: #00000062;
+				border: 1px solid #00000062;
 			}
 		}
 	}

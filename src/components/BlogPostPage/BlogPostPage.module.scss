@@ -1,2 +1,63 @@
 .wrapper {
+	width: 1140px;
+	margin: 0 auto;
+	margin-top: 60px;
+	.wrap {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 20px;
+		.link {
+			display: flex;
+			align-items: center;
+			text-decoration: none;
+			color: #000;
+			.arrow {
+				margin-right: 10px;
+			}
+			&:hover {
+				color: #00000062;
+			}
+		}
+		.reactions {
+			display: flex;
+			align-items: center;
+			padding-right: 20px;
+			gap: 60px;
+			.likeCount {
+				display: flex;
+				align-items: center;
+				color: #959298;
+				.icon {
+					cursor: pointer;
+					margin-right: 5px;
+					color: inherit;
+				}
+			}
+		}
+	}
+	.title {
+		text-align: center;
+		color: #000;
+		font-weight: 600;
+		font-size: 25px;
+		margin-bottom: 20px;
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+	.image {
+		display: block;
+		margin: 0 auto;
+		width: 80%;
+		margin-bottom: 20px;
+	}
+	.text {
+		display: block;
+		margin: 0 auto;
+		width: 80%;
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
 }
